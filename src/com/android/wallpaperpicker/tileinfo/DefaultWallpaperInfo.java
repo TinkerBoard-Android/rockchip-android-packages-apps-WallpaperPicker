@@ -90,7 +90,7 @@ public class DefaultWallpaperInfo extends DrawableThumbWallpaperInfo {
             Bitmap defaultWallpaper = ((BitmapDrawable) WallpaperManager.getInstance(
                     a.getApplicationContext()).getBuiltInDrawable()).getBitmap();
             ByteArrayOutputStream tmpOut = new ByteArrayOutputStream(2048);
-            if (defaultWallpaper.compress(Bitmap.CompressFormat.PNG, 100, tmpOut)) {
+            if (defaultWallpaper.compress(Bitmap.CompressFormat.JPEG, 90, tmpOut)) {
                 byte[] outByteArray = tmpOut.toByteArray();
                 WallpaperManagerCompat.getInstance(a.getApplicationContext())
                         .setStream(new ByteArrayInputStream(outByteArray), null,
