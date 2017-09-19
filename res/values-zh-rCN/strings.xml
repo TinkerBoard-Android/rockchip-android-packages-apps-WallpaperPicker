@@ -34,4 +34,11 @@
     <string name="pick_image" msgid="3189640419551368385">"我的照片"</string>
     <string name="pick_wallpaper" msgid="4628969645948454559">"壁纸"</string>
     <string name="crop_wallpaper" msgid="4882870800623585836">"剪裁壁纸"</string>
+
+    <!-- Option for setting the wallpaper only on the home screen. -->
+    <string name="which_wallpaper_option_home_screen">"桌面壁纸"</string>
+    <!-- Option for setting the wallpaper only on the lock screen. -->
+    <string name="which_wallpaper_option_lock_screen">"锁屏壁纸"</string>
+    <!-- Option for setting the wallpaper on both the home screen and lock screen. -->
+    <string name="which_wallpaper_option_home_screen_and_lock_screen">"桌面和锁屏壁纸"</string>
 </resources>
