@@ -30,4 +30,6 @@ public abstract class WallpaperManagerCompat {
             int whichWallpaper) throws IOException;
 
     public abstract void clear(int whichWallpaper) throws IOException;
+
+    public abstract void clear() throws IOException;
 }

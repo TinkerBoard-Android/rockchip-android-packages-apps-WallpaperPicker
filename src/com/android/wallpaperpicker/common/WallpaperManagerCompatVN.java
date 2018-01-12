@@ -40,4 +40,16 @@ public class WallpaperManagerCompatVN extends WallpaperManagerCompatV16 {
             super.clear(whichWallpaper);
         }
     }
+
+    @Override
+    public void clear() throws IOException {
+        try {
+            // TODO: use mWallpaperManager.clear(whichWallpaper) without needing reflection.
+            Method clear = WallpaperManager.class.getMethod("clear", new Class<?>[0]);
+            clear.invoke(mWallpaperManager, null);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            // Fall back to previous implementation (set both)
+            super.clear();
+        }
+    }
 }

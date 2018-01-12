@@ -73,8 +73,10 @@ public class DefaultWallpaperInfo extends DrawableThumbWallpaperInfo {
                 boolean succeeded;
                 if (whichWallpaper == WallpaperManagerCompat.FLAG_SET_LOCK) {
                     succeeded = setDefaultOnLock(a);
-                } else {
+                } else if (whichWallpaper == WallpaperManagerCompat.FLAG_SET_SYSTEM) {
                     succeeded = clearWallpaper(a, whichWallpaper);
+                } else {
+                    succeeded = clearWallpaper(a);
                 }
                 return succeeded;
             }
@@ -99,6 +101,23 @@ public class DefaultWallpaperInfo extends DrawableThumbWallpaperInfo {
         } catch (IOException e) {
             Log.w(TAG, "Setting wallpaper to default threw exception", e);
             succeeded = false;
+        }
+        return succeeded;
+    }
+
+    private boolean clearWallpaper(WallpaperPickerActivity a) {
+        boolean succeeded = true;
+        try {
+            WallpaperManagerCompat.getInstance(a.getApplicationContext()).clear();
+        } catch (IOException e) {
+            Log.w(TAG, "Setting lock and home wallpaper to default threw exception", e);
+            succeeded = false;
+        } catch (SecurityException e) {
+            // Happens on Samsung S6, for instance:
+            // "Permission denial: writing to settings requires android.permission.WRITE_SETTINGS"
+            Log.w(TAG, "Setting lock and home wallpaper to default threw exception", e);
+            // In this case, clearing worked even though the exception was thrown afterwards.
+            succeeded = true;
         }
         return succeeded;
     }

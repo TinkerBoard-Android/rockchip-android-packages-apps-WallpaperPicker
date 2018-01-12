@@ -24,4 +24,9 @@ public class WallpaperManagerCompatV16 extends WallpaperManagerCompat {
     public void clear(int whichWallpaper) throws IOException {
         mWallpaperManager.clear();
     }
+
+    @Override
+    public void clear() throws IOException {
+        mWallpaperManager.clear();
+    }
 }
